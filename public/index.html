@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview — Dashboard Kit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- bootstrap icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- project styles (compiled from scss) -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="page-body">
+    <a class="visually-hidden-focusable position-absolute top-0 start-0 z-3 p-2 m-2 bg-white text-dark rounded shadow"
+        href="#main-content">skip to main content</a>
+    <!-- mobile top bar: opens sidebar offcanvas -->
+    <header class="mobile-topbar d-md-none">
+        <div class="container-fluid d-flex align-items-center justify-content-between py-2">
+            <button class="btn btn-link text-white p-0 mobile-topbar__toggle" type="button" data-bs-toggle="offcanvas"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-label="open navigation menu">
+                <i class="bi bi-list fs-3" aria-hidden="true"></i>
+            </button>
+            <p class="mb-0 mobile-topbar__title">dashboard kit</p>
+            <span class="invisible" aria-hidden="true">.</span>
+        </div>
+    </header>
+
+    <div class="layout-shell d-flex flex-column flex-md-row min-vh-100">
+        <!-- sidebar: offcanvas on small screens, persistent from md up -->
+        <aside class="offcanvas offcanvas-start offcanvas-md sidebar text-bg-dark" tabindex="-1" id="sidebarMenu"
+            aria-labelledby="sidebarMenuLabel" data-bs-scroll="true" data-bs-backdrop="false">
+            <div class="offcanvas-header d-md-none">
+                <h2 class="offcanvas-title h6 mb-0" id="sidebarMenuLabel">menu</h2>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                    aria-label="close"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column p-0">
+                <header class="sidebar__brand d-flex align-items-center gap-2 px-3 py-4">
+                    <img src="assets/images/logo.svg" width="32" height="32" alt="">
+                    <p class="sidebar__brand-text mb-0">dashboard kit</p>
+                </header>
+                <nav class="sidebar__nav sidebar__nav--primary flex-grow-1" aria-label="primary">
+                    <ul class="nav flex-column gap-1 px-2 mb-0">
+                        <li class="nav-item">
+                            <a class="nav-link sidebar__link d-flex align-items-center gap-3" href="#">
+                                <i class="bi bi-clock-history sidebar__icon" aria-hidden="true"></i>
+                                <span>overdue</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar__link d-flex align-items-center gap-3" href="#">
+                                <img src="assets/images/2.%20tickets.svg" width="16" height="16" alt=""
+                                    class="sidebar__icon-img">
+                                <span>tickets</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar__link d-flex align-items-center gap-3" href="#">
+                                <img src="assets/images/3.%20ideas.svg" width="16" height="16" alt=""
+                                    class="sidebar__icon-img">
+                                <span>ideas</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar__link d-flex align-items-center gap-3" href="#">
+                                <img src="assets/images/4.%20contacts.svg" width="16" height="16" alt=""
+                                    class="sidebar__icon-img">
+                                <span>contacts</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar__link d-flex align-items-center gap-3" href="#">
+                                <img src="assets/images/5.%20agents.svg" width="16" height="16" alt=""
+                                    class="sidebar__icon-img">
+                                <span>agents</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar__link d-flex align-items-center gap-3" href="#">
+                                <img src="assets/images/6.%20articles.svg" width="16" height="16" alt=""
+                                    class="sidebar__icon-img">
+                                <span>articles</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <hr class="sidebar__rule mx-3 my-3 opacity-25">
+                <nav class="sidebar__nav sidebar__nav--secondary pb-4 mb-0" aria-label="account">
+                    <ul class="nav flex-column gap-1 px-2 mb-0">
+                        <li class="nav-item">
+                            <a class="nav-link sidebar__link d-flex align-items-center gap-3" href="#">
+                                <img src="assets/images/a_1.%20settings.svg" width="16" height="16" alt=""
+                                    class="sidebar__icon-img">
+                                <span>settings</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link sidebar__link d-flex align-items-center gap-3" href="#">
+                                <img src="assets/images/a_2.%20subscription.svg" width="16" height="16" alt=""
+                                    class="sidebar__icon-img">
+                                <span>subscription</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- main overview -->
+        <main id="main-content" class="main-area flex-grow-1 container-fluid py-3 py-md-4 px-3 px-md-4">
+            <!-- page header -->
+            <header
+                class="main-header d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 mb-4">
+                <h1 class="main-header__title mb-0">overview</h1>
+                <div class="main-header__tools d-flex align-items-center gap-3" role="toolbar" aria-label="page tools">
+                    <button type="button" class="btn btn-link p-0 text-secondary" aria-label="search">
+                        <img src="assets/images/search.svg" width="20" height="20" alt="">
+                    </button>
+                    <button type="button" class="btn btn-link p-0 position-relative text-secondary"
+                        aria-label="notifications">
+                        <i class="bi bi-bell fs-5" aria-hidden="true"></i>
+                        <span class="header-notify-dot" aria-hidden="true"></span>
+                        <span class="visually-hidden">new notifications</span>
+                    </button>
+                    <span class="vr d-none d-sm-block text-secondary opacity-25" role="separator"
+                        aria-hidden="true"></span>
+                    <section class="d-flex align-items-center gap-2 mb-0" aria-label="signed in user">
+                        <p class="main-header__user d-none d-sm-inline mb-0">jones ferdinand</p>
+                        <span
+                            class="avatar rounded-circle bg-secondary text-white d-inline-flex align-items-center justify-content-center"
+                            role="img" aria-label="user initials j f">jf</span>
+                    </section>
+                </div>
+            </header>
+
+            <!-- metric cards -->
+            <section class="mb-4" aria-labelledby="metrics-heading">
+                <h2 id="metrics-heading" class="visually-hidden">ticket metrics</h2>
+                <div class="row g-3">
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <article class="card metric-card shadow-sm h-100 text-center py-4 px-3"
+                            aria-labelledby="metric-unresolved">
+                            <h3 id="metric-unresolved" class="metric-card__label mb-2">unresolved</h3>
+                            <p class="metric-card__value mb-0"><span class="visually-hidden">count: </span>60</p>
+                        </article>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <article
+                            class="card metric-card shadow-sm h-100 text-center py-4 px-3"
+                            aria-labelledby="metric-overdue">
+                            <h3 id="metric-overdue" class="metric-card__label mb-2">overdue</h3>
+                            <p class="metric-card__value mb-0"><span class="visually-hidden">count: </span>16</p>
+                        </article>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <article class="card metric-card shadow-sm h-100 text-center py-4 px-3"
+                            aria-labelledby="metric-open">
+                            <h3 id="metric-open" class="metric-card__label mb-2">open</h3>
+                            <p class="metric-card__value mb-0"><span class="visually-hidden">count: </span>43</p>
+                        </article>
+                    </div>
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <article class="card metric-card shadow-sm h-100 text-center py-4 px-3"
+                            aria-labelledby="metric-hold">
+                            <h3 id="metric-hold" class="metric-card__label mb-2">on hold</h3>
+                            <p class="metric-card__value mb-0"><span class="visually-hidden">count: </span>64</p>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- today's trends (full width) -->
+            <section class="mb-4" aria-labelledby="trends-heading">
+                <article class="trends-card row g-0 align-items-stretch gx-0 mx-0 bg-white">
+                    <div class="col-lg-8 trends-chart-col p-3 p-md-4">
+                        <header
+                            class="d-flex flex-column flex-md-row align-items-md-start justify-content-md-between gap-2 mb-3">
+                            <hgroup class="mb-0">
+                                <h2 id="trends-heading" class="trends-card__title mb-1">today's trends</h2>
+                                <p class="text-secondary small mb-0">
+                                    as of <time datetime="2019-05-25T21:41">25 may 2019, 09:41 pm</time>
+                                </p>
+                            </hgroup>
+                            <ul class="list-unstyled d-flex align-items-center gap-3 small mb-0">
+                                <li class="d-flex align-items-center gap-2"><span
+                                        class="trends-legend trends-legend--today" aria-hidden="true"></span> today</li>
+                                <li class="d-flex align-items-center gap-2"><span
+                                        class="trends-legend trends-legend--yesterday" aria-hidden="true"></span>
+                                    yesterday</li>
+                            </ul>
+                        </header>
+                        <figure class="trends-chart-wrap mb-0">
+                            <canvas id="trendsChart" aria-label="today and yesterday trend chart" role="img"></canvas>
+                            <figcaption class="visually-hidden">line chart comparing ticket volume for today and
+                                yesterday by hour</figcaption>
+                        </figure>
+                    </div>
+                    <aside class="col-lg-4 trends-stats d-flex flex-column" aria-label="trend summary figures">
+                        <ul class="trends-stats-panel list-unstyled mb-0 flex-grow-1 d-flex flex-column w-100">
+                            <li class="trends-stat-cell">
+                                <span class="trends-stat-cell__label">resolved</span>
+                                <span class="trends-stat-cell__value">449</span>
+                            </li>
+                            <li class="trends-stat-cell">
+                                <span class="trends-stat-cell__label">received</span>
+                                <span class="trends-stat-cell__value">426</span>
+                            </li>
+                            <li class="trends-stat-cell">
+                                <span class="trends-stat-cell__label">average first response time</span>
+                                <span class="trends-stat-cell__value">33m</span>
+                            </li>
+                            <li class="trends-stat-cell">
+                                <span class="trends-stat-cell__label">average response time</span>
+                                <span class="trends-stat-cell__value">3h 8m</span>
+                            </li>
+                            <li class="trends-stat-cell">
+                                <span class="trends-stat-cell__label">resolution within sla</span>
+                                <span class="trends-stat-cell__value">94%</span>
+                            </li>
+                        </ul>
+                    </aside>
+                </article>
+            </section>
+
+            <!-- bottom row: unresolved tickets + tasks -->
+            <section class="mb-2" aria-labelledby="dashboard-panels-heading">
+                <h2 id="dashboard-panels-heading" class="visually-hidden">queues and tasks</h2>
+                <div class="row g-3">
+                    <div class="col-12 col-lg-6">
+                        <article class="card border-0 shadow-sm h-100">
+                            <div
+                                class="card-header bg-white border-0 pb-0 d-flex flex-wrap align-items-start justify-content-between gap-2">
+                                <div>
+                                    <h3 class="h6 mb-1">unresolved tickets</h3>
+                                    <p class="text-secondary small mb-0">group: support</p>
+                                </div>
+                                <button type="button"
+                                    class="btn btn-link btn-sm panel-card__action p-0 text-decoration-none"
+                                    data-bs-toggle="modal" data-bs-target="#detailsModal">view details</button>
+                            </div>
+                            <div class="card-body pt-3">
+                                <ul class="list-group list-group-flush">
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center px-0 border-secondary-subtle">
+                                        <span class="panel-list__primary">waiting on feature request</span>
+                                        <span class="panel-list__metric">4238</span>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center px-0 border-secondary-subtle">
+                                        <span class="panel-list__primary">awaiting customer response</span>
+                                        <span class="panel-list__metric">1005</span>
+                                    </li>
+                                    <li
+                                        class="list-group-item d-flex justify-content-between align-items-center px-0 border-secondary-subtle">
+                                        <span class="panel-list__primary">awaiting developer fix</span>
+                                        <span class="panel-list__metric">914</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+                                        <span class="panel-list__primary">pending</span>
+                                        <span class="panel-list__metric">281</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <article class="card border-0 shadow-sm h-100">
+                            <div
+                                class="card-header bg-white border-0 pb-0 d-flex flex-wrap align-items-start justify-content-between gap-2">
+                                <div>
+                                    <h3 class="panel-card__title mb-1">tasks</h3>
+                                    <p class="text-secondary small mb-0">today</p>
+                                </div>
+                                <button type="button"
+                                    class="btn btn-link btn-sm panel-card__action p-0 text-decoration-none"
+                                    data-bs-toggle="modal" data-bs-target="#taskModal">view all</button>
+                            </div>
+                            <div class="card-body pt-3">
+                                <button type="button"
+                                    class="btn btn-light border w-100 d-flex align-items-center justify-content-start gap-2 text-secondary mb-3"
+                                    data-bs-toggle="modal" data-bs-target="#taskModal">
+                                    <img src="assets/images/new.svg" width="18" height="18" alt="" aria-hidden="true">
+                                    <span>create new task</span>
+                                </button>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item px-0 border-secondary-subtle">
+                                        <div class="d-flex align-items-start gap-2">
+                                            <div class="form-check mt-1">
+                                                <input class="form-check-input" type="checkbox" id="task1"
+                                                    aria-label="finish ticket update">
+                                            </div>
+                                            <div
+                                                class="flex-grow-1 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <label class="form-check-label task-list__label mb-0" for="task1">finish
+                                                    ticket update</label>
+                                                <span class="badge rounded-pill text-bg-warning text-dark">urgent</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0 border-secondary-subtle">
+                                        <div class="d-flex align-items-start gap-2">
+                                            <div class="form-check mt-1">
+                                                <input class="form-check-input" type="checkbox" id="task2"
+                                                    aria-label="create new ticket example">
+                                            </div>
+                                            <div
+                                                class="flex-grow-1 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <label class="form-check-label task-list__label mb-0" for="task2">create
+                                                    new ticket example</label>
+                                                <span class="badge rounded-pill text-bg-success">new</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item px-0">
+                                        <div class="d-flex align-items-start gap-2">
+                                            <div class="form-check mt-1">
+                                                <input class="form-check-input" type="checkbox" id="task3" checked
+                                                    aria-label="update ticket report">
+                                            </div>
+                                            <div
+                                                class="flex-grow-1 d-flex flex-wrap align-items-center justify-content-between gap-2">
+                                                <label
+                                                    class="form-check-label task-list__label mb-0 text-decoration-line-through text-secondary"
+                                                    for="task3">update ticket report</label>
+                                                <span class="badge rounded-pill text-bg-secondary">default</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- modal: ticket details (advanced Bootstrap) -->
+    <article class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="detailsModalLabel">unresolved tickets — support</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-secondary small">breakdown of open tickets by waiting state. numbers match the
+                        overview list.</p>
+                    <ul class="list-group list-group-flush">
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-secondary-subtle">
+                            <span>waiting on feature request</span>
+                            <span class="badge text-bg-primary rounded-pill">4238</span>
+                        </li>
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-secondary-subtle">
+                            <span>awaiting customer response</span>
+                            <span class="badge text-bg-primary rounded-pill">1005</span>
+                        </li>
+                        <li
+                            class="list-group-item d-flex justify-content-between align-items-center border-secondary-subtle">
+                            <span>awaiting developer fix</span>
+                            <span class="badge text-bg-primary rounded-pill">914</span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <span>pending</span>
+                            <span class="badge text-bg-primary rounded-pill">281</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">close</button>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <!-- modal: new task form (advanced Bootstrap) -->
+    <article class="modal fade" id="taskModal" tabindex="-1" aria-labelledby="taskModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title h5" id="taskModalLabel">create new task</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <form id="newTaskForm" novalidate>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="taskTitle" class="form-label">task title</label>
+                            <input type="text" class="form-control" id="taskTitle" name="taskTitle" required
+                                placeholder="describe the task">
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskPriority" class="form-label">priority</label>
+                            <select class="form-select" id="taskPriority" name="taskPriority" required>
+                                <option value="" selected disabled>choose priority</option>
+                                <option value="urgent">urgent</option>
+                                <option value="new">new</option>
+                                <option value="default">default</option>
+                            </select>
+                        </div>
+                        <div class="mb-0">
+                            <label for="taskNotes" class="form-label">notes (optional)</label>
+                            <textarea class="form-control" id="taskNotes" name="taskNotes" rows="3"
+                                placeholder="add context for your team"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">cancel</button>
+                        <button type="submit" class="btn btn-primary">save task</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </article>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>

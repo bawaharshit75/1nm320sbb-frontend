@@ -1,0 +1,405 @@
+@use "sass:color";
+
+// design tokens
+$color-page: #f7f8fc;
+$color-sidebar: #363740;
+$color-sidebar-hover: #3e4049;
+$color-primary: #3751ff;
+$color-muted: #9fa2b4;
+$color-border-soft: #dfe0eb;
+$color-stat-label: #9fa2b4;
+$color-stat-value: #252733;
+
+// typography — matches INM 320 Frontend Framework (Mulish, sizes from Figma overview)
+$font-family-sans: "Mulish", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+$font-size-title-page: 1.5rem; // 24px — page title
+$font-size-title-section: 1.1875rem; // 19px — card / section titles
+$font-size-metric-value: 2.5rem; // 40px — stat numbers
+$font-size-stat-side: 1.5rem; // 24px — trends right column values
+$color-sidebar-text: #a4a6b3;
+$color-sidebar-active-text: #dde2ff;
+
+// base
+.page-body {
+    background-color: $color-page;
+    font-family: $font-family-sans;
+    font-size: 0.875rem; // 14px body
+    line-height: 1.5;
+    color: #252733;
+}
+
+// mobile top bar
+.mobile-topbar {
+    background-color: $color-sidebar;
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+}
+
+.mobile-topbar__toggle {
+    text-decoration: none;
+}
+
+.mobile-topbar__title {
+    font-size: $font-size-title-section;
+    font-weight: 700;
+    color: $color-sidebar-text;
+    text-transform: capitalize;
+}
+
+// layout: main area offset on small screens when top bar is sticky
+.main-area {
+    min-width: 0;
+}
+
+// sidebar (offcanvas + persistent at md+)
+.sidebar {
+    background-color: $color-sidebar !important;
+    width: 100%;
+    max-width: 16rem;
+
+    @media (min-width: 768px) {
+        position: relative;
+        transform: none !important;
+        visibility: visible !important;
+        display: flex;
+        flex-direction: column;
+        max-width: 16rem;
+        min-height: 100vh;
+        border-right: 0;
+    }
+}
+
+.sidebar__brand-text {
+    font-size: $font-size-title-section;
+    font-weight: 700;
+    letter-spacing: normal;
+    color: $color-sidebar-text !important;
+    text-transform: capitalize;
+}
+
+.sidebar__rule {
+    border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+.sidebar__link {
+    color: $color-sidebar-text !important;
+    border-radius: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: normal;
+    text-transform: capitalize;
+
+    &:hover,
+    &:focus {
+        background-color: rgba(255, 255, 255, 0.06);
+        color: #fff !important;
+    }
+}
+
+.sidebar__link--active {
+    background-color: $color-sidebar-hover !important;
+    color: $color-sidebar-active-text !important;
+    border-left: 0.2rem solid #fff;
+    padding-left: calc(0.75rem - 0.2rem);
+}
+
+.sidebar__icon {
+    font-size: 1rem;
+    width: 1rem;
+    text-align: center;
+}
+
+.sidebar__icon-img {
+    flex-shrink: 0;
+}
+
+// main header
+.main-header__title {
+    font-size: $font-size-title-page;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #252733;
+    text-transform: capitalize;
+}
+
+.main-header__user {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #252733;
+    text-transform: capitalize;
+}
+
+.avatar {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+// metric cards — bootstrap card customization (no border-0: it kills the border so hover ring never shows)
+.metric-card {
+    border-radius: 0.5rem;
+    border: 1px solid transparent !important;
+    transition:
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+
+    &:hover,
+    &:focus-within {
+        border-color: $color-primary !important;
+        box-shadow: 0 0.25rem 1rem rgba(55, 81, 255, 0.22) !important;
+
+        .metric-card__label,
+        .metric-card__value {
+            color: $color-primary !important;
+        }
+    }
+}
+
+.metric-card__label {
+    letter-spacing: normal;
+    font-size: $font-size-title-section;
+    font-weight: 600;
+    color: $color-muted;
+    text-transform: capitalize;
+}
+
+.metric-card h3.metric-card__label {
+    font-size: $font-size-title-section;
+    font-weight: 600;
+    margin-top: 0;
+    line-height: 1.25;
+    color: $color-muted;
+}
+
+.metric-card__value {
+    font-size: $font-size-metric-value;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #252733;
+}
+
+// trends block
+.trends-card__title {
+    font-size: $font-size-title-section;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #252733;
+    text-transform: capitalize;
+}
+
+.trends-card .text-secondary.small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.trends-card .list-unstyled.small {
+    font-size: 0.75rem;
+    font-weight: 400;
+}
+
+.trends-card {
+    border: 0;
+    border-bottom: 1px solid $color-border-soft;
+    border-radius: 0;
+    box-shadow: none !important;
+    overflow: visible;
+}
+
+.trends-card hgroup {
+    margin: 0;
+}
+
+.trends-chart-wrap {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    height: 14rem;
+
+    @media (min-width: 576px) {
+        height: 16rem;
+    }
+
+    @media (min-width: 992px) {
+        height: 18rem;
+    }
+}
+
+// stats column: left rule on large screens only (no outer box on the panel)
+.trends-stats {
+    padding: 1rem 0;
+    background-color: #fff;
+
+    @media (min-width: 992px) {
+        padding: 1.25rem 0;
+        border-left: 1px solid $color-border-soft;
+    }
+}
+
+.trends-stats-panel {
+    background-color: transparent;
+    border: 0;
+    min-height: 14rem;
+
+    @media (min-width: 992px) {
+        min-height: 0;
+    }
+}
+
+.trends-stat-cell {
+    flex: 1 1 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1.1rem 0;
+    border-bottom: 1px solid $color-border-soft;
+
+    &:last-child {
+        border-bottom: 0;
+    }
+}
+
+.trends-stat-cell__label {
+    color: $color-stat-label;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 0.4rem;
+    max-width: 12rem;
+    text-transform: capitalize;
+}
+
+.trends-stat-cell__value {
+    color: $color-stat-value;
+    font-size: $font-size-stat-side;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+// bottom panel cards (unresolved tickets, tasks)
+.panel-card__title {
+    font-size: $font-size-title-section;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #252733;
+    text-transform: capitalize;
+}
+
+.panel-card__action {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-primary !important;
+    text-transform: capitalize;
+}
+
+.main-area .card-header .text-secondary.small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-transform: capitalize;
+}
+
+.main-area .card-body .btn-light span {
+    font-weight: 600;
+    color: #252733;
+    text-transform: capitalize;
+}
+
+.panel-list__primary {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #252733;
+    text-transform: capitalize;
+}
+
+.panel-list__metric {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $color-muted;
+}
+
+.task-list__label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #252733;
+    text-transform: capitalize;
+}
+
+.modal-title {
+    font-family: $font-family-sans;
+    font-size: $font-size-title-section;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.modal .form-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #252733;
+    text-transform: capitalize;
+}
+
+.trends-legend {
+    width: 1rem;
+    height: 0.15rem;
+    border-radius: 0.1rem;
+    display: inline-block;
+}
+
+.trends-legend--today {
+    background-color: $color-primary;
+}
+
+.trends-legend--yesterday {
+    background-color: #dfe0eb;
+}
+
+// bootstrap primary override (mobile-first: applies at all widths)
+.btn-primary {
+    background-color: $color-primary;
+    border-color: $color-primary;
+
+    &:hover,
+    &:focus {
+        $hover: color.adjust($color-primary, $lightness: -6%);
+        background-color: $hover;
+        border-color: $hover;
+    }
+}
+
+.text-bg-primary {
+    background-color: rgba($color-primary, 1) !important;
+}
+
+.bg-primary {
+    background-color: $color-primary !important;
+}
+
+.badge.text-bg-primary {
+    background-color: $color-primary !important;
+}
+
+// list polish
+.list-group-item {
+    background-color: transparent;
+}
+
+// notification dot on bell
+.header-notify-dot {
+    position: absolute;
+    top: 0.15rem;
+    right: 0.1rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    background-color: $color-primary;
+    border-radius: 50%;
+    border: 2px solid $color-page;
+}

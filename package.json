@@ -1,0 +1,21 @@
+{
+  "name": "1nm320sbb-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run lite-server\" \"npm run sass\"",
+    "lite-server": "lite-server --baseDir=\"public\" --port=3000",
+    "sass": "sass --watch src/sass/sstyle.scss:public/assets/css/style.css",
+    "sass:build": "sass src/sass/sstyle.scss:public/assets/css/style.css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "concurrently": "^9.2.1",
+    "lite-server": "^2.6.1",
+    "sass": "^1.98.0"
+  }
+}
